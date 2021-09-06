@@ -37,4 +37,11 @@ class Snake {
   int grid_height;
 };
 
+class EnemySnake: public Snake{
+ public:
+  EnemySnake(int grid_width, int grid_height)
+      : Snake(grid_width, grid_height){}
+
+}; 
+
 #endif
