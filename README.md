@@ -1,12 +1,16 @@
 # CPPND: Capstone Snake Game Example
 
-This is a starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
+This is a repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
 
-<img src="./snake_game_with_enemy.gif"/>
+I extended the basic mode in snake game, and I added a enemy bot snake(Green Snake) to compete with the player(Blue Snake). The enemy bot snake has a transparent body and uses A* algorithm to track the food. 
 
-The Capstone Project gives you a chance to integrate what you've learned throughout this program. This project will become an important part of your portfolio to share with current and future colleagues and employers.
+![snake_game](https://github.com/longhongc/CppND-Capstone-Snake-Game/blob/master/snake_game.gif)
 
-In this project, you can build your own C++ application or extend this Snake game, following the principles you have learned throughout this Nanodegree Program. This project will demonstrate that you can independently create applications using a wide range of C++ features.
+## Additional Project Feature Structure
+The EnemySnake class is inside the Snake.h and Snake.cpp, and it is an inheritance class from the original Snake class. Its uses most of the Snake class member function except for the control and planning function which was replaced by using the Path_Planner class. 
+
+The Path Planner class is for implementing the A* algorithm for the path planning of the enemy bot.
+
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
