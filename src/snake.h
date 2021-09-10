@@ -28,19 +28,26 @@ class Snake {
   float head_y;
   std::vector<SDL_Point> body;
 
- private:
-  void UpdateHead();
-  void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
-
-  bool growing{false};
   int grid_width;
   int grid_height;
+
+  void UpdateHead();
+  void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
+ private:
+
+  bool growing{false};
 };
 
 class EnemySnake: public Snake{
  public:
   EnemySnake(int grid_width, int grid_height)
-      : Snake(grid_width, grid_height){}
+      : Snake(grid_width, grid_height){
+  }
+
+  void Update(SDL_Point &food); 
+  void UpdateHead(SDL_Point &current); 
+  std::vector<SDL_Point> path_to_goal; 
+  bool is_new_goal = true; 
 
 }; 
 

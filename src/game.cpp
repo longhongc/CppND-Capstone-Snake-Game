@@ -70,22 +70,35 @@ void Game::Update() {
   if (!snake.alive) return;
 
   snake.Update();
-  enemy_snake.Update();
+  enemy_snake.Update(food);
+  //enemy_snake.Update(food);
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
 
+  int new_enemy_x = static_cast<int>(enemy_snake.head_x);
+  int new_enemy_y = static_cast<int>(enemy_snake.head_y);
+
   // Check if there's food over here
-  if (food.x == new_x && food.y == new_y) {
+  if (food.x == new_x && food.y == new_y){
     score++;
     PlaceFood();
     // Grow snake and increase speed.
     snake.GrowBody();
-    enemy_snake.GrowBody();
     snake.speed += 0.02;
-    enemy_snake.speed += 0.02;
+    enemy_snake.is_new_goal = true; 
+  }
+  if (food.x == new_enemy_x && food.y == new_enemy_y){
+    enemy_score++;
+    PlaceFood();
+    // Grow snake and increase speed.
+    enemy_snake.GrowBody();
+    //enemy_snake.speed += 0.02;
+    enemy_snake.is_new_goal = true; 
   }
 }
 
 int Game::GetScore() const { return score; }
+int Game::GetEnemyScore() const { return enemy_score; }
 int Game::GetSize() const { return snake.size; }
+int Game::GetEnemySize() const { return enemy_snake.size; }
